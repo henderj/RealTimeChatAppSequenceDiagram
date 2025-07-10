@@ -1,0 +1,16 @@
+@startuml
+User -> ChatClient: Sends message
+activate ChatClient
+ChatClient -> ChatServer: Transmit message
+activate ChatServer
+ChatServer -> ChatDatabase: Store message
+activate ChatDatabase
+ChatDatabase -> ChatServer: Message stored
+ChatServer -> ChatClient: Acknowledge message
+ChatClient -> User: Message sent confirmation
+deactivate ChatDatabase
+deactivate ChatClient
+deactivate ChatServer
+User -> ChatClient: Receives message notification
+ChatClient -> User: Display incoming message
+@enduml
